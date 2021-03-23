@@ -25,6 +25,17 @@ export const globalStyles = (
           opacity: 1;
         }
       }
+
+      footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        font-size: 12px;
+        text-align: center;
+        padding: 5px 0 5px 0;
+        z-index: 999;
+      }
     `}
   />
 )

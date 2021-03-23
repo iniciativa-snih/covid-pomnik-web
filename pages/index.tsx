@@ -46,7 +46,7 @@ const Index = ({ deadsWithStatuesAndStories }: Props) => {
         <ItemsDrawer deadsWithStatuesAndStories={deadsWithStatuesAndStories} />
       </main>
 
-      <footer></footer>
+      <footer>© {moment().format("YYYY")} nazev</footer>
     </>
   )
 }
