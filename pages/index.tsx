@@ -124,8 +124,7 @@ export const getStaticProps: GetStaticProps = async (): Promise<GetStaticPropsRe
 
 const HeaderText = styled.div`
   text-align: center;
-  padding: 80px 40px 40px 40px;
-  position: absolute;
+  padding: 40px 40px 40px 20px;
   top: 0;
   left: 0;
   z-index: 999;
@@ -133,7 +132,7 @@ const HeaderText = styled.div`
   color: rgb(0 0 0 / 80%);
 
   p {
-    font-size: 14px;
+    font-size: 15px;
     line-height: 1.6;
   }
 `

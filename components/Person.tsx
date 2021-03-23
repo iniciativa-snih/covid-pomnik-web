@@ -22,5 +22,4 @@ const PersonWrapper = styled.div`
   width: ${personSize.width}px;
   height: ${personSize.height}px;
   animation: fadeIn ease 0.5s;
-  opacity: 80%;
 `

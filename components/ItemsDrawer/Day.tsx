@@ -25,11 +25,22 @@ export const Day = ({ day, deadByDateIndex, onChangeActive, activeDayUrl, scroll
   }, [activeDayUrl, day.date, scrolled])
 
   return (
-    <VisibilitySensor scrollCheck={true} onChange={onChangeVisibility} active={!isVisible} offset={{ top: 1, bottom: 1 }} partialVisibility>
+    <VisibilitySensor
+      scrollCheck={true}
+      resizeCheck={true}
+      onChange={onChangeVisibility}
+      active={!isVisible}
+      offset={{ top: -1000, bottom: -1000 }}
+      partialVisibility>
       {() => (
         <PersonsWrapper ref={ref} data-date={day.date}>
           {isVisible && (
-            <VisibilitySensor scrollCheck={true} offset={{ top: 200, bottom: 200 }} partialVisibility onChange={(isActive) => isActive && onChangeActive(day)}>
+            <VisibilitySensor
+              scrollCheck={true}
+              resizeCheck={true}
+              offset={{ top: 200, bottom: 200 }}
+              partialVisibility
+              onChange={(isActive) => isActive && onChangeActive(day)}>
               <Height>
                 <DayMessages messages={day.messages} />
                 <Persons day={day} deadByDateIndex={deadByDateIndex} />

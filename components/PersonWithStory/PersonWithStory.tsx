@@ -13,8 +13,7 @@ export const PersonWithStory = ({ dateDeadsRefs, dayDead, personPositionArea }: 
         left: personPositionArea?.left,
         zIndex: 997 // personPositionArea?.zIndex
       }}>
-      <PersonStatue personName={"postava_babi"} withStory={true} />
-      {/* //TODO prelozit nasvy postavicek */}
+      <PersonStatue personName={dayDead.statue} withStory={true} />
 
       <StoryWrapper title={dayDead.story}>
         <Name>{`${dayDead.name}, ${dayDead.city ? `${dayDead.city},` : ""} ${dayDead.age} let`}</Name>
@@ -34,7 +33,7 @@ const PersonWithStoryWrapper = styled.div`
   position: absolute;
   width: ${personWithStoryWith.width}px;
   height: ${personWithStoryWith.height}px;
-  background-color: #cccccc;
+  background-color: #ececec;
   font-size: 12px;
   color: rgba(0, 0, 0, 0.8);
   display: flex;

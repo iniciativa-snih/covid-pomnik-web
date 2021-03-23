@@ -63,11 +63,11 @@ const ActiveDate = styled.div`
   right: 0;
   bottom: 0;
   margin-bottom: 100px;
-  background-color: #cccccc;
+  background-color: #ececec;
   padding: 10px;
   z-index: 999;
   animation: fadeIn ease 0.5s;
-  font-size: 14px;
+  font-size: 15px;
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   line-height: 1.3;

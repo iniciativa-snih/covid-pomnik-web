@@ -11,8 +11,9 @@ interface Props {
 }
 
 const DayMessageWrapper = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   width: 50vw;
   padding: 20px;
   border-radius: 3px;
+  background-color: #ececec;
 `

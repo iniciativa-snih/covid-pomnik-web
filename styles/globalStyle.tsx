@@ -10,7 +10,7 @@ export const globalStyles = (
       body {
         padding: 0;
         margin: 0;
-        background: #e8e8e8;
+        background: #fff;
         min-height: 100%;
         font-family: "Roboto", sans-serif;
         color: rgba(0, 0, 0, 0.7);

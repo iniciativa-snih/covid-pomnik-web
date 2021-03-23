@@ -27,5 +27,5 @@ const PersonStatueWrapper = styled.div<{ withStory?: boolean }>`
   width: ${personSize.width}px;
   height: ${personSize.height}px;
   flex: 1 0 auto;
-  ${(props: { withStory?: boolean }) => (props.withStory ? `filter: invert(40%);` : "")}
+  ${(props: { withStory?: boolean }) => (props.withStory ? `filter: invert(20%);` : "")}
 `
