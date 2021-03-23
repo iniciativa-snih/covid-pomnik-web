@@ -14,10 +14,10 @@ export const Day = ({ day, deadByDateIndex, onChangeActive, activeDayUrl, scroll
   }
 
   useEffect(() => {
-    if (ref?.current && !scrolled) {
-      const date = ref.current.attributes.getNamedItem("data-date").value
+    if (!scrolled) {
+      const date = ref?.current.attributes.getNamedItem("data-date").value
       if (date == activeDayUrl.date) {
-        ref.current?.scrollIntoView()
+        ref?.current?.scrollIntoView()
       }
     }
 

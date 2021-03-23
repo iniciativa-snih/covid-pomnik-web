@@ -1,23 +1,33 @@
-import React from "react"
-import Head from "next/head"
+import React, { useState } from "react"
 import { ItemsDrawer } from "../components/ItemsDrawer/ItemsDrawer"
 import styled from "@emotion/styled"
 import { GetStaticProps, GetStaticPropsResult } from "next"
-import axios from "axios"
 import { getImageFileNameByIndex } from "../common/getImageFileNameByIndex"
 import { randomInteger } from "../common/randomInteger"
 import moment from "moment"
+import { NextSeo } from "next-seo"
+import { Menu } from "../components/Menu/Menu"
 
 const dev = process.env.NODE_ENV !== "production"
 
 const Index = ({ deadsWithStatuesAndStories }: Props) => {
   return (
     <>
-      <Head>
-        <title>Památník obětí pandemie</title>
-      </Head>
+      <NextSeo
+        title="Památník obětí pandemie"
+        description="Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát prostor pozůstalým."
+        canonical="https://covid-pomnik-web.vercel.app/"
+        openGraph={{
+          url: "https://covid-pomnik-web.vercel.app/",
+          title: "Památník obětí pandemie",
+          description:
+            "Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát prostor pozůstalým."
+        }}
+      />
 
       <main>
+        <Menu />
+
         <HeaderText>
           <h1>Památník obětí pandemie</h1>
           <p>
@@ -84,21 +94,12 @@ export interface Message {
   message: string
 }
 
+const fetcher = (url: string) => fetch(url).then((res) => res.json())
+
 export const getStaticProps: GetStaticProps = async (): Promise<GetStaticPropsResult<Props>> => {
-  const deadsByDate: Dead[] = await axios
-    .get("https://covid-pomnik.herokuapp.com/api/deads")
-    .then((res) => res.data)
-    .catch((err) => console.error(err))
-
-  const stories: Story[] = await axios
-    .get("https://covid-pomnik.herokuapp.com/api/stories")
-    .then((res) => res.data)
-    .catch((err) => console.error(err))
-
-  const messages: Message[] = await axios
-    .get("https://covid-pomnik.herokuapp.com/api/messages")
-    .then((res) => res.data)
-    .catch((err) => console.error(err))
+  const deadsByDate: Dead[] = await fetcher("https://covid-pomnik.herokuapp.com/api/deads")
+  const stories: Story[] = await fetcher("https://covid-pomnik.herokuapp.com/api/stories")
+  const messages: Message[] = await fetcher("https://covid-pomnik.herokuapp.com/api/messages")
 
   const deadsWithStatuesAndStories = deadsByDate.map((day) => {
     const daily = Array(day.daily)
