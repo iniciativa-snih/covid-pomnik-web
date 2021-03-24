@@ -1,28 +1,16 @@
-import React, { Dispatch, SetStateAction, useEffect, useRef, useState } from "react"
+import React, { Dispatch, LegacyRef, SetStateAction, useState } from "react"
 import { Persons } from "./Persons"
 import VisibilitySensor from "react-visibility-sensor"
 import { DeadWithStatuesAndStories } from "../../pages"
 import styled from "@emotion/styled"
 import { DayMessages } from "../Message/DayMessages"
 
-export const Day = ({ day, deadByDateIndex, onChangeActive, activeDayUrl, scrolled }: Props) => {
-  const ref = useRef<HTMLDivElement>()
+export const Day = ({ day, deadByDateIndex, onChangeActive, dayRef }: Props) => {
   const [isVisible, setVisibility] = useState<boolean>(false)
 
   const onChangeVisibility = (isVisible: boolean) => {
     setVisibility(isVisible)
   }
-
-  useEffect(() => {
-    if (!scrolled) {
-      const date = ref?.current.attributes.getNamedItem("data-date").value
-      if (date == activeDayUrl.date) {
-        ref?.current?.scrollIntoView()
-      }
-    }
-
-    return () => null
-  }, [activeDayUrl, day.date, scrolled])
 
   return (
     <VisibilitySensor
@@ -33,7 +21,7 @@ export const Day = ({ day, deadByDateIndex, onChangeActive, activeDayUrl, scroll
       offset={{ top: -1000, bottom: -1000 }}
       partialVisibility>
       {() => (
-        <PersonsWrapper ref={ref} data-date={day.date}>
+        <PersonsWrapper ref={dayRef} data-date={day.date}>
           {isVisible && (
             <VisibilitySensor
               scrollCheck={true}
@@ -58,7 +46,7 @@ interface Props {
   deadByDateIndex: number
   onChangeActive: Dispatch<SetStateAction<DeadWithStatuesAndStories>>
   activeDayUrl?: DeadWithStatuesAndStories
-  scrolled: boolean
+  dayRef: LegacyRef<HTMLDivElement>
 }
 
 const PersonsWrapper = styled.div`

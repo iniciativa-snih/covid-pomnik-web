@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react"
+import React, { createRef, useEffect, useState } from "react"
 import { DeadWithStatuesAndStories } from "../../pages"
 import { Day } from "./Day"
 import moment from "moment"
@@ -10,6 +10,7 @@ const thousandsFormat = "0,0"
 
 export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props) => {
   const router = useRouter()
+  const daysRefs = Array.from({ length: deadsWithStatuesAndStories.length }).map(() => createRef<HTMLDivElement>())
   const [activeDayUrl, setActiveDayUrl] = useState<DeadWithStatuesAndStories>(deadsWithStatuesAndStories[0])
   const [scrolled, setScrolled] = useState<boolean>(false)
 
@@ -27,8 +28,13 @@ export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props) => {
 
     if (activeDayUrl) {
       setActiveDayUrl(activeDayUrl)
+
+      const scrollToRef = daysRefs.find((dayRef) => dayRef?.current.attributes.getNamedItem("data-date").value === activeDayUrl.date)
+      if (!moment(deadsWithStatuesAndStories[0].date).isSame(moment(scrollToRef.current.attributes.getNamedItem("data-date").value)) && !scrolled) {
+        scrollToRef?.current?.scrollIntoView()
+      }
     }
-  }, [deadsWithStatuesAndStories, router.query?.d])
+  }, [daysRefs, deadsWithStatuesAndStories, router.query?.d, scrolled])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -48,7 +54,7 @@ export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props) => {
       </ActiveDate>
 
       {deadsWithStatuesAndStories.map((day, index) => (
-        <Day deadByDateIndex={index} key={day.date} day={day} onChangeActive={onChangeActiveDayHandler} activeDayUrl={activeDayUrl} scrolled={scrolled} />
+        <Day deadByDateIndex={index} key={day.date} dayRef={daysRefs[index]} day={day} onChangeActive={onChangeActiveDayHandler} activeDayUrl={activeDayUrl} />
       ))}
     </>
   )
