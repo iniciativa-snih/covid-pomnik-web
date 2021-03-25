@@ -1,11 +1,11 @@
 import React, { Dispatch, LegacyRef, SetStateAction, useState } from "react"
 import { Persons } from "./Persons"
 import VisibilitySensor from "react-visibility-sensor"
-import { DeadWithStatuesAndStories } from "../../pages"
+import { DeadDay, DeadWithStatuesAndStories } from "../../pages"
 import styled from "@emotion/styled"
 import { DayMessages } from "../Message/DayMessages"
 
-export const Day = ({ day, deadByDateIndex, onChangeActive, dayRef }: Props) => {
+export const Day = ({ day, deadByDateIndex, onChangeActive, dayRef, onClickOpenModalHandler }: Props) => {
   const [isVisible, setVisibility] = useState<boolean>(false)
 
   const onChangeVisibility = (isVisible: boolean) => {
@@ -30,8 +30,8 @@ export const Day = ({ day, deadByDateIndex, onChangeActive, dayRef }: Props) => 
               partialVisibility
               onChange={(isActive) => isActive && onChangeActive(day)}>
               <Height>
-                <DayMessages messages={day.messages} />
-                <Persons day={day} deadByDateIndex={deadByDateIndex} />
+                {day.messages.length > 0 && <DayMessages messages={day.messages} />}
+                <Persons day={day} deadByDateIndex={deadByDateIndex} onClickOpenModalHandler={onClickOpenModalHandler} />
               </Height>
             </VisibilitySensor>
           )}
@@ -47,6 +47,7 @@ interface Props {
   onChangeActive: Dispatch<SetStateAction<DeadWithStatuesAndStories>>
   activeDayUrl?: DeadWithStatuesAndStories
   dayRef: LegacyRef<HTMLDivElement>
+  onClickOpenModalHandler: (dayDead: DeadDay) => void
 }
 
 const PersonsWrapper = styled.div`

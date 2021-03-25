@@ -14,12 +14,12 @@ const Index = ({ deadsWithStatuesAndStories }: Props) => {
   return (
     <>
       <NextSeo
-        title="Památník obětí pandemie"
+        title="E-památník obětí pandemie v České republice"
         description="Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát prostor pozůstalým."
         canonical="https://covid-pomnik-web.vercel.app/"
         openGraph={{
           url: "https://covid-pomnik-web.vercel.app/",
-          title: "Památník obětí pandemie",
+          title: "E-památník obětí pandemie v České republice",
           description:
             "Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát prostor pozůstalým."
         }}
@@ -29,7 +29,7 @@ const Index = ({ deadsWithStatuesAndStories }: Props) => {
         <Menu />
 
         <HeaderText>
-          <h1>Památník obětí pandemie</h1>
+          <h1>E-památník obětí pandemie v České republice</h1>
           <p>
             Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát
             prostor pozůstalým. A tím není jen blízký příbuzný, nýbrž každý, kdo pozůstal. Každý, komu zemřelý chybí, a kdo pociťuje jeho odchod jako ztrátu, s
@@ -41,12 +41,16 @@ const Index = ({ deadsWithStatuesAndStories }: Props) => {
             památku jako připomínku lidské křehkosti a zranitelnosti. Zůstávají součástí nás všech, kteří odmítáme lhostejnost a víme, že bez soucitu a ochoty
             navzájem se podepřít ve smutku by život byl nesnesitelně chudý.
           </p>
+          <p>
+            Pokud chcete pridat pribeh, svou vzpomínku na vašeho blízkého, poslete email na{" "}
+            <a href="mailto:info@epamatnikpandemie.cz">info@epamatnikpandemie.cz</a> se jmenem, datem umrti, vekem a pribehem.
+          </p>
         </HeaderText>
 
         <ItemsDrawer deadsWithStatuesAndStories={deadsWithStatuesAndStories} />
       </main>
 
-      <footer>© {moment().format("YYYY")} nazev</footer>
+      <footer>© {moment().format("YYYY")} Iniciativa Sníh</footer>
     </>
   )
 }

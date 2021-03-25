@@ -1,10 +1,11 @@
 import React, { createRef, useEffect, useState } from "react"
-import { DeadWithStatuesAndStories } from "../../pages"
+import { DeadDay, DeadWithStatuesAndStories } from "../../pages"
 import { Day } from "./Day"
 import moment from "moment"
 import styled from "@emotion/styled"
 import numeral from "numeraljs"
 import { useRouter } from "next/router"
+import { Modal } from "../Modal/Modal"
 
 const thousandsFormat = "0,0"
 
@@ -13,6 +14,7 @@ export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props) => {
   const daysRefs = Array.from({ length: deadsWithStatuesAndStories.length }).map(() => createRef<HTMLDivElement>())
   const [activeDayUrl, setActiveDayUrl] = useState<DeadWithStatuesAndStories>(deadsWithStatuesAndStories[0])
   const [scrolled, setScrolled] = useState<boolean>(false)
+  const [modalIsOpen, setModalIsOpen] = useState<DeadDay | undefined>(undefined)
 
   const onChangeActiveDayHandler = (day: DeadWithStatuesAndStories) => {
     if (!moment(deadsWithStatuesAndStories[0].date).isSame(moment(day.date))) {
@@ -45,8 +47,28 @@ export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props) => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const onClickOpenModalHandler = (dayDead: DeadDay) => {
+    process.browser && window.document.body.classList.add("disable-scrolling")
+    setModalIsOpen(dayDead)
+  }
+
+  const onClickCloseModalHandler = () => {
+    process.browser && window.document.body.classList.remove("disable-scrolling")
+    setModalIsOpen(undefined)
+  }
+
   return (
     <>
+      {modalIsOpen && (
+        <Modal onCloseModal={onClickCloseModalHandler}>
+          <h1>
+            {modalIsOpen.name}, {modalIsOpen.city ? `${modalIsOpen.city}, ` : ""} {modalIsOpen.age} let
+          </h1>
+          <p>{moment(modalIsOpen.date).format("D. M. YYYY")}</p>
+          <p>{modalIsOpen.story}</p>
+        </Modal>
+      )}
+
       <ActiveDate>
         <div>{moment(activeDayUrl.date).format("D. M. YYYY")}</div>
         <div>Úmrtí: {`${numeral(activeDayUrl.daily.length).format(thousandsFormat)}`}</div>
@@ -54,7 +76,15 @@ export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props) => {
       </ActiveDate>
 
       {deadsWithStatuesAndStories.map((day, index) => (
-        <Day deadByDateIndex={index} key={day.date} dayRef={daysRefs[index]} day={day} onChangeActive={onChangeActiveDayHandler} activeDayUrl={activeDayUrl} />
+        <Day
+          deadByDateIndex={index}
+          key={day.date}
+          dayRef={daysRefs[index]}
+          day={day}
+          onChangeActive={onChangeActiveDayHandler}
+          activeDayUrl={activeDayUrl}
+          onClickOpenModalHandler={onClickOpenModalHandler}
+        />
       ))}
     </>
   )

@@ -25,4 +25,5 @@ const MessagesWrapper = styled.div`
   text-align: center;
   z-index: 998;
   position: relative;
+  pointer-events: none;
 `

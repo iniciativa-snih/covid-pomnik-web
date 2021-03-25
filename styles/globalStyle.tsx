@@ -15,6 +15,10 @@ export const globalStyles = (
         font-family: "Roboto", sans-serif;
         color: rgba(0, 0, 0, 0.7);
         font-size: 24px;
+
+        .disable-scrolling {
+          overflow: hidden;
+        }
       }
 
       @keyframes fadeIn {
@@ -24,6 +28,10 @@ export const globalStyles = (
         100% {
           opacity: 1;
         }
+      }
+
+      a {
+        color: rgba(0, 0, 0, 0.8);
       }
 
       footer {

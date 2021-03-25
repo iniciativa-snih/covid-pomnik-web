@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react"
-import { DeadWithStatuesAndStories } from "../../pages"
+import { DeadDay, DeadWithStatuesAndStories } from "../../pages"
 import { PersonWithStory } from "../PersonWithStory/PersonWithStory"
 import { Person } from "../Person"
 import { personSize, personWithStoryWith } from "../../common/config"
 
-export const Persons = ({ day, deadByDateIndex }: Props) => {
+export const Persons = ({ day, deadByDateIndex, onClickOpenModalHandler }: Props) => {
   const dateDeadsRefs = useRef<HTMLDivElement[]>([])
   const [personsAreas, setPersonsAreas] = useState([])
 
@@ -101,7 +101,15 @@ export const Persons = ({ day, deadByDateIndex }: Props) => {
     <>
       {day.daily.map((dayDead, i) => {
         if (dayDead.name && dayDead.story) {
-          return <PersonWithStory dateDeadsRefs={dateDeadsRefs} personPositionArea={personsAreas[i]} dayDead={dayDead} key={`${day.date}${i}`} />
+          return (
+            <PersonWithStory
+              dateDeadsRefs={dateDeadsRefs}
+              personPositionArea={personsAreas[i]}
+              dayDead={dayDead}
+              key={`${day.date}${i}`}
+              onClickOpenModal={() => onClickOpenModalHandler(dayDead)}
+            />
+          )
         }
 
         return <Person personName={dayDead.statue} dateDeadsRefs={dateDeadsRefs} personPositionArea={personsAreas[i]} key={`${day.date}${i}`} />
@@ -113,4 +121,5 @@ export const Persons = ({ day, deadByDateIndex }: Props) => {
 interface Props {
   day: DeadWithStatuesAndStories
   deadByDateIndex: number
+  onClickOpenModalHandler: (dayDead: DeadDay) => void
 }

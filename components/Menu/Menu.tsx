@@ -11,13 +11,20 @@ export const Menu = () => {
       <MenuComponentWithStyle right noShadow isOpen={menuIsOpen} closeCallback={() => setMenuIsOpen(false)}>
         <MenuContentWrapper>
           <div>
-            <h3>Památník obětí pandemie</h3>
             <ul>
-              <li>Menu item 1</li>
+              <li>
+                <a href="#">GDPR</a>
+              </li>
+              <li>
+                <a href="#">Facebook Iniciativa Sníh</a>
+              </li>
             </ul>
           </div>
           <div>
-            <span>info@domena.cz</span>
+            <p>
+              Pokud chcete pridat pribeh, svou vzpomínku na vašeho blízkého, poslete email na{" "}
+              <a href="mailto:info@epamatnikpandemie.cz">info@epamatnikpandemie.cz</a> se jmenem, datem umrti, vekem a pribehem.
+            </p>
           </div>
         </MenuContentWrapper>
       </MenuComponentWithStyle>
@@ -66,7 +73,12 @@ const MenuContentWrapper = styled.div`
       padding: 0;
 
       li {
-        padding-left: 20px;
+        margin-bottom: 10px;
+        padding-left: 0px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
       }
     }
   }

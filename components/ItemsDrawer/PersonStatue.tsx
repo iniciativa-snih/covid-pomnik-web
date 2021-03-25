@@ -26,6 +26,6 @@ interface Props {
 const PersonStatueWrapper = styled.div<{ withStory?: boolean }>`
   width: ${personSize.width}px;
   height: ${personSize.height}px;
-  flex: 1 0 auto;
+  flex: 0 0 40px;
   ${(props: { withStory?: boolean }) => (props.withStory ? `filter: invert(20%);` : "")}
 `
