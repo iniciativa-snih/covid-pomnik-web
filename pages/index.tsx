@@ -42,8 +42,8 @@ const Index = ({ deadsWithStatuesAndStories }: Props) => {
             navzájem se podepřít ve smutku by život byl nesnesitelně chudý.
           </p>
           <p>
-            Pokud chcete pridat pribeh, svou vzpomínku na vašeho blízkého, poslete email na{" "}
-            <a href="mailto:info@epamatnikpandemie.cz">info@epamatnikpandemie.cz</a> se jmenem, datem umrti, vekem a pribehem.
+            Pokud chcete přidat příběh, svou vzpomínku na vašeho blízkého, pošlete email na{" "}
+            <a href="mailto:info@epamatnikpandemie.cz">info@epamatnikpandemie.cz</a> se jménem, datem úmrtí, věkem a příběhem.
           </p>
         </HeaderText>
 

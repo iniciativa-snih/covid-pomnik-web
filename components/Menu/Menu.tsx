@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { default as MenuComponent } from "cheeseburger-menu"
 import { default as MenuIcon } from "react-hamburger-menu"
 import styled from "@emotion/styled"
+import Image from "next/image"
 
 export const Menu = () => {
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false)
@@ -22,9 +23,11 @@ export const Menu = () => {
           </div>
           <div>
             <p>
-              Pokud chcete pridat pribeh, svou vzpomínku na vašeho blízkého, poslete email na{" "}
-              <a href="mailto:info@epamatnikpandemie.cz">info@epamatnikpandemie.cz</a> se jmenem, datem umrti, vekem a pribehem.
+              Pokud chcete přidat příběh, svou vzpomínku na vašeho blízkého, pošlete email na{" "}
+              <a href="mailto:info@epamatnikpandemie.cz">info@epamatnikpandemie.cz</a> se jménem, datem úmrtí, věkem a příběhem.
             </p>
+
+            <Image src="/images/snih-logo.png" alt="snih-logo.png" width={210} height={54} />
           </div>
         </MenuContentWrapper>
       </MenuComponentWithStyle>
