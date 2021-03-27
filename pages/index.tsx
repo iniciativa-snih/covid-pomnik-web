@@ -16,9 +16,9 @@ const Index = ({ deadsWithStatuesAndStories }: Props) => {
       <NextSeo
         title="E-památník obětí pandemie v České republice"
         description="Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát prostor pozůstalým."
-        canonical="https://covid-pomnik-web.vercel.app/"
+        canonical="https://www.pomnikpandemie.cz/"
         openGraph={{
-          url: "https://covid-pomnik-web.vercel.app/",
+          url: "https://www.pomnikpandemie.cz/",
           title: "E-památník obětí pandemie v České republice",
           description:
             "Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát prostor pozůstalým."
@@ -29,7 +29,7 @@ const Index = ({ deadsWithStatuesAndStories }: Props) => {
         <Menu />
 
         <HeaderText>
-          <h1>E-památník obětí pandemie v České republice</h1>
+          <h1>Památník obětí pandemie v České republice</h1>
           <p>
             Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát
             prostor pozůstalým. A tím není jen blízký příbuzný, nýbrž každý, kdo pozůstal. Každý, komu zemřelý chybí, a kdo pociťuje jeho odchod jako ztrátu, s
@@ -43,7 +43,7 @@ const Index = ({ deadsWithStatuesAndStories }: Props) => {
           </p>
           <p>
             Pokud chcete přidat příběh, svou vzpomínku na vašeho blízkého, pošlete email na{" "}
-            <a href="mailto:info@epamatnikpandemie.cz">info@epamatnikpandemie.cz</a> se jménem, datem úmrtí, věkem a příběhem.
+            <a href="mailto:info@pamatnikpandemie.cz">info@pamatnikpandemie.cz</a> se jménem, datem úmrtí, věkem a příběhem.
           </p>
         </HeaderText>
 
