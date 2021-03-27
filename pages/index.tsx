@@ -101,9 +101,9 @@ export interface Message {
 const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 export const getStaticProps: GetStaticProps = async (): Promise<GetStaticPropsResult<Props>> => {
-  const deadsByDate: Dead[] = await fetcher("https://covid-pomnik.herokuapp.com/api/deads")
-  const stories: Story[] = await fetcher("https://covid-pomnik.herokuapp.com/api/stories")
-  const messages: Message[] = await fetcher("https://covid-pomnik.herokuapp.com/api/messages")
+  const deadsByDate: Dead[] = await fetcher("https://admin.pamatnikpandemie.cz/api/deads")
+  const stories: Story[] = await fetcher("https://admin.pamatnikpandemie.cz/api/stories")
+  const messages: Message[] = await fetcher("https://admin.pamatnikpandemie.cz/api/messages")
 
   const deadsWithStatuesAndStories = deadsByDate.map((day) => {
     const daily = Array(day.daily)
