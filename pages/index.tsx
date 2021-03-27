@@ -16,9 +16,9 @@ const Index = ({ deadsWithStatuesAndStories }: Props) => {
       <NextSeo
         title="Památník obětí pandemie v České republice"
         description="Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát prostor pozůstalým."
-        canonical="https://www.pomnikpandemie.cz/"
+        canonical="https://test.pamatnikpandemie.cz/"
         openGraph={{
-          url: "https://www.pomnikpandemie.cz/",
+          url: "https://test.pamatnikpandemie.cz/",
           title: "Památník obětí pandemie v České republice",
           description:
             "Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát prostor pozůstalým."

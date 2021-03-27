@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: "https://www.pamatnikpandemie.cz",
+  siteUrl: "https://test.pamatnikpandemie.cz",
   generateRobotsTxt: true
 }
