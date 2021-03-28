@@ -1,27 +1,36 @@
 import React, { createRef, useEffect, useState } from "react"
-import { DeadDay, DeadWithStatuesAndStories } from "../../pages"
 import { Day } from "./Day"
 import moment from "moment"
 import styled from "@emotion/styled"
 import numeral from "numeraljs"
 import { useRouter } from "next/router"
-import { Modal } from "../Modal/Modal"
-
-const thousandsFormat = "0,0"
+import { DeadPersonModalWindow } from "../DeadPersonModalWindow/DeadPersonModalWindow"
+import { DeadPerson, DateDeadsWithStatuesAndStories } from "../../common/types"
+import { dateTimeFormat, dateTimeUrlFormat, numeralThousandsFormat } from "../../common/config"
 
 export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props) => {
   const router = useRouter()
   const daysRefs = Array.from({ length: deadsWithStatuesAndStories.length }).map(() => createRef<HTMLDivElement>())
-  const [activeDayUrl, setActiveDayUrl] = useState<DeadWithStatuesAndStories>(deadsWithStatuesAndStories[0])
+  const [activeDayUrl, setActiveDayUrl] = useState<DateDeadsWithStatuesAndStories>(deadsWithStatuesAndStories[0])
   const [scrolled, setScrolled] = useState<boolean>(false)
-  const [modalIsOpen, setModalIsOpen] = useState<DeadDay | undefined>(undefined)
+  const [modalContent, setModalContent] = useState<DeadPerson | undefined>(undefined)
 
-  const onChangeActiveDayHandler = (day: DeadWithStatuesAndStories) => {
+  const onChangeActiveDayHandler = (day: DateDeadsWithStatuesAndStories) => {
     if (!moment(deadsWithStatuesAndStories[0].date).isSame(moment(day.date))) {
-      router.push(`?d=${moment(day.date).format("YYYY-MM-DD")}`, undefined, {
+      router.push(`?d=${moment(day.date).format(dateTimeUrlFormat)}`, undefined, {
         shallow: true
       })
     }
+  }
+
+  const onClickOpenModalHandler = (dayDead: DeadPerson) => {
+    process.browser && window.document.body.classList.add("disable-scrolling")
+    setModalContent(dayDead)
+  }
+
+  const onClickCloseModalHandler = () => {
+    process.browser && window.document.body.classList.remove("disable-scrolling")
+    setModalContent(undefined)
   }
 
   useEffect(() => {
@@ -47,32 +56,22 @@ export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props) => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  const onClickOpenModalHandler = (dayDead: DeadDay) => {
-    process.browser && window.document.body.classList.add("disable-scrolling")
-    setModalIsOpen(dayDead)
-  }
-
-  const onClickCloseModalHandler = () => {
-    process.browser && window.document.body.classList.remove("disable-scrolling")
-    setModalIsOpen(undefined)
-  }
-
   return (
     <>
-      {modalIsOpen && (
-        <Modal onCloseModal={onClickCloseModalHandler}>
+      {modalContent && (
+        <DeadPersonModalWindow onCloseModal={onClickCloseModalHandler}>
           <h1>
-            {modalIsOpen.name}, {modalIsOpen.city ? `${modalIsOpen.city}, ` : ""} {modalIsOpen.age} let
+            {modalContent.name}, {modalContent.city ? `${modalContent.city}, ` : ""} {modalContent.age} let
           </h1>
-          <p>{moment(modalIsOpen.date).format("D. M. YYYY")}</p>
-          <p>{modalIsOpen.story}</p>
-        </Modal>
+          <p>{moment(modalContent.date).format(dateTimeFormat)}</p>
+          <p>{modalContent.story}</p>
+        </DeadPersonModalWindow>
       )}
 
       <ActiveDate>
-        <div>{moment(activeDayUrl.date).format("D. M. YYYY")}</div>
-        <div>Úmrtí: {`${numeral(activeDayUrl.daily.length).format(thousandsFormat)}`}</div>
-        <div>Celkem úmrtí: {`${numeral(activeDayUrl.cumulative).format(thousandsFormat)}`}</div>
+        <div>{moment(activeDayUrl.date).format(dateTimeFormat)}</div>
+        <div>Úmrtí: {`${numeral(activeDayUrl.daily.length).format(numeralThousandsFormat)}`}</div>
+        <div>Celkem úmrtí: {`${numeral(activeDayUrl.cumulative).format(numeralThousandsFormat)}`}</div>
       </ActiveDate>
 
       {deadsWithStatuesAndStories.map((day, index) => (
@@ -91,7 +90,7 @@ export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props) => {
 }
 
 interface Props {
-  deadsWithStatuesAndStories: DeadWithStatuesAndStories[]
+  deadsWithStatuesAndStories: DateDeadsWithStatuesAndStories[]
 }
 
 const ActiveDate = styled.div`

@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 
-export const Modal = ({ children, onCloseModal }: Props) => {
+export const DeadPersonModalWindow = ({ children, onCloseModal }: Props) => {
   return (
     <ModalWrapper onClick={onCloseModal}>
       <ModalInner

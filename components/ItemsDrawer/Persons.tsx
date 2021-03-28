@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react"
-import { DeadDay, DeadWithStatuesAndStories } from "../../pages"
 import { PersonWithStory } from "../PersonWithStory/PersonWithStory"
 import { Person } from "../Person"
 import { personSize, personWithStoryWith } from "../../common/config"
+import { DeadPerson, DateDeadsWithStatuesAndStories } from "../../common/types"
 
 export const Persons = ({ day, deadByDateIndex, onClickOpenModalHandler }: Props) => {
   const dateDeadsRefs = useRef<HTMLDivElement[]>([])
@@ -119,7 +119,7 @@ export const Persons = ({ day, deadByDateIndex, onClickOpenModalHandler }: Props
 }
 
 interface Props {
-  day: DeadWithStatuesAndStories
+  day: DateDeadsWithStatuesAndStories
   deadByDateIndex: number
-  onClickOpenModalHandler: (dayDead: DeadDay) => void
+  onClickOpenModalHandler: (dayDead: DeadPerson) => void
 }

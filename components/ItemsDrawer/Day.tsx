@@ -1,9 +1,9 @@
 import React, { Dispatch, LegacyRef, SetStateAction, useState } from "react"
 import { Persons } from "./Persons"
 import VisibilitySensor from "react-visibility-sensor"
-import { DeadDay, DeadWithStatuesAndStories } from "../../pages"
 import styled from "@emotion/styled"
 import { DayMessages } from "../Message/DayMessages"
+import { DeadPerson, DateDeadsWithStatuesAndStories } from "../../common/types"
 
 export const Day = ({ day, deadByDateIndex, onChangeActive, dayRef, onClickOpenModalHandler }: Props) => {
   const [isVisible, setVisibility] = useState<boolean>(false)
@@ -42,12 +42,12 @@ export const Day = ({ day, deadByDateIndex, onChangeActive, dayRef, onClickOpenM
 }
 
 interface Props {
-  day: DeadWithStatuesAndStories
+  day: DateDeadsWithStatuesAndStories
   deadByDateIndex: number
-  onChangeActive: Dispatch<SetStateAction<DeadWithStatuesAndStories>>
-  activeDayUrl?: DeadWithStatuesAndStories
+  onChangeActive: Dispatch<SetStateAction<DateDeadsWithStatuesAndStories>>
+  activeDayUrl?: DateDeadsWithStatuesAndStories
   dayRef: LegacyRef<HTMLDivElement>
-  onClickOpenModalHandler: (dayDead: DeadDay) => void
+  onClickOpenModalHandler: (dayDead: DeadPerson) => void
 }
 
 const PersonsWrapper = styled.div`

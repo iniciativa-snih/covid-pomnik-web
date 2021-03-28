@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import { ItemsDrawer } from "../components/ItemsDrawer/ItemsDrawer"
 import styled from "@emotion/styled"
 import { GetStaticProps, GetStaticPropsResult } from "next"
@@ -7,6 +7,9 @@ import { randomInteger } from "../common/randomInteger"
 import moment from "moment"
 import { NextSeo } from "next-seo"
 import { Menu } from "../components/Menu/Menu"
+import { adminApiUrl, mainEmailAddress, mainRootWebUrl } from "../common/config"
+import { apiFetcher } from "../common/apiFetcher"
+import { DateDead, DateDeadsWithStatuesAndStories, Message, PersonStory } from "../common/types"
 
 const dev = process.env.NODE_ENV !== "production"
 
@@ -16,9 +19,9 @@ const Index = ({ deadsWithStatuesAndStories }: Props) => {
       <NextSeo
         title="Památník obětí pandemie v České republice"
         description="Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát prostor pozůstalým."
-        canonical="https://test.pamatnikpandemie.cz/"
+        canonical={mainRootWebUrl}
         openGraph={{
-          url: "https://test.pamatnikpandemie.cz/",
+          url: mainRootWebUrl,
           title: "Památník obětí pandemie v České republice",
           description:
             "Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát prostor pozůstalým."
@@ -42,8 +45,8 @@ const Index = ({ deadsWithStatuesAndStories }: Props) => {
             navzájem se podepřít ve smutku by život byl nesnesitelně chudý.
           </p>
           <p>
-            Pokud chcete přidat příběh, svou vzpomínku na vašeho blízkého, pošlete email na{" "}
-            <a href="mailto:info@pamatnikpandemie.cz">info@pamatnikpandemie.cz</a> se jménem, datem úmrtí, věkem a příběhem.
+            Pokud chcete přidat příběh, svou vzpomínku na vašeho blízkého, pošlete email na <a href={`mailto:${mainEmailAddress}`}>{mainEmailAddress}</a> se
+            jménem, datem úmrtí, věkem a příběhem.
           </p>
         </HeaderText>
 
@@ -56,54 +59,13 @@ const Index = ({ deadsWithStatuesAndStories }: Props) => {
 }
 
 interface Props {
-  deadsWithStatuesAndStories: DeadWithStatuesAndStories[]
+  deadsWithStatuesAndStories: DateDeadsWithStatuesAndStories[]
 }
-
-export interface Dead {
-  cumulative: number
-  daily: number
-  date: string
-}
-
-export interface Story {
-  age: number
-  city: string | null
-  date: string
-  id: number
-  name: string
-  statue: string
-  story: string
-}
-
-export interface DeadWithStatuesAndStories {
-  cumulative: number
-  daily: DeadDay[]
-  messages?: Message[]
-  date: string
-}
-
-export interface DeadDay {
-  statue: string
-  age?: number
-  city?: string | null
-  date?: string
-  id?: number
-  name?: string
-  story?: string
-}
-
-export interface Message {
-  id: number
-  date: string
-  message: string
-}
-
-const fetcher = (url: string) => fetch(url).then((res) => res.json())
 
 export const getStaticProps: GetStaticProps = async (): Promise<GetStaticPropsResult<Props>> => {
-  const deadsByDate: Dead[] = await fetcher("https://admin.pamatnikpandemie.cz/api/deads")
-  const stories: Story[] = await fetcher("https://admin.pamatnikpandemie.cz/api/stories")
-  const messages: Message[] = await fetcher("https://admin.pamatnikpandemie.cz/api/messages")
+  const deadsByDate: DateDead[] = await apiFetcher(`${adminApiUrl}/api/deads`)
+  const stories: PersonStory[] = await apiFetcher(`${adminApiUrl}/api/stories`)
+  const messages: Message[] = await apiFetcher(`${adminApiUrl}/api/messages`)
 
   const deadsWithStatuesAndStories = deadsByDate.map((day) => {
     const daily = Array(day.daily)

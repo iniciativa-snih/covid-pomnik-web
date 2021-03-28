@@ -2,7 +2,7 @@ import React from "react"
 import { PersonStatue } from "../ItemsDrawer/PersonStatue"
 import styled from "@emotion/styled"
 import { personWithStoryWith } from "../../common/config"
-import { DeadDay } from "../../pages"
+import { DeadPerson } from "../../common/types"
 
 export const PersonWithStory = ({ dateDeadsRefs, dayDead, personPositionArea, onClickOpenModal }: Props) => {
   const substringStory = dayDead.story.length > 150 ? `${dayDead.story.substring(0, 150)}... ` : dayDead.story
@@ -28,7 +28,7 @@ export const PersonWithStory = ({ dateDeadsRefs, dayDead, personPositionArea, on
 }
 
 interface Props {
-  dayDead: DeadDay
+  dayDead: DeadPerson
   dateDeadsRefs: React.MutableRefObject<HTMLDivElement[]>
   personPositionArea: any
   onClickOpenModal: () => void

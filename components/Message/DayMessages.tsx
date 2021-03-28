@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { Message } from "../../pages"
 import { DayMessage } from "./DayMessage"
+import { Message } from "../../common/types"
 
 export const DayMessages = ({ messages }: Props) => {
   return (
