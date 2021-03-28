@@ -1,11 +1,11 @@
 import React, { Dispatch, LegacyRef, SetStateAction, useState } from "react"
-import { Persons } from "./Persons"
+import { Persons } from "../Persons/Persons"
 import VisibilitySensor from "react-visibility-sensor"
 import styled from "@emotion/styled"
 import { DayMessages } from "../Message/DayMessages"
 import { DeadPerson, DateDeadsWithStatuesAndStories } from "../../common/types"
 
-export const Day = ({ day, deadByDateIndex, onChangeActive, dayRef, onClickOpenModalHandler }: Props) => {
+export const Day = ({ day, deadByDateIndex, onChangeActive, dayRef, onClickOpenModalHandler }: Props): JSX.Element => {
   const [isVisible, setVisibility] = useState<boolean>(false)
 
   const onChangeVisibility = (isVisible: boolean) => {

@@ -3,7 +3,7 @@ import styled from "@emotion/styled"
 import { DayMessage } from "./DayMessage"
 import { Message } from "../../common/types"
 
-export const DayMessages = ({ messages }: Props) => {
+export const DayMessages = ({ messages }: Props): JSX.Element => {
   return (
     <MessagesWrapper>
       {messages.map((m) => (

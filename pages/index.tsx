@@ -5,9 +5,8 @@ import { GetStaticProps, GetStaticPropsResult } from "next"
 import { getImageFileNameByIndex } from "../common/getImageFileNameByIndex"
 import { randomInteger } from "../common/randomInteger"
 import moment from "moment"
-import { NextSeo } from "next-seo"
 import { Menu } from "../components/Menu/Menu"
-import { adminApiUrl, mainEmailAddress, mainRootWebUrl } from "../common/config"
+import { adminApiUrl, mainEmailAddress } from "../common/config"
 import { apiFetcher } from "../common/apiFetcher"
 import { DateDead, DateDeadsWithStatuesAndStories, Message, PersonStory } from "../common/types"
 
@@ -16,18 +15,6 @@ const dev = process.env.NODE_ENV !== "production"
 const Index = ({ deadsWithStatuesAndStories }: Props) => {
   return (
     <>
-      <NextSeo
-        title="Památník obětí pandemie v České republice"
-        description="Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát prostor pozůstalým."
-        canonical={mainRootWebUrl}
-        openGraph={{
-          url: mainRootWebUrl,
-          title: "Památník obětí pandemie v České republice",
-          description:
-            "Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát prostor pozůstalým."
-        }}
-      />
-
       <main>
         <Menu />
 

@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react"
 import { PersonWithStory } from "../PersonWithStory/PersonWithStory"
-import { Person } from "../Person"
+import { Person } from "../Person/Person"
 import { personSize, personWithStoryWith } from "../../common/config"
 import { DeadPerson, DateDeadsWithStatuesAndStories } from "../../common/types"
 
-export const Persons = ({ day, deadByDateIndex, onClickOpenModalHandler }: Props) => {
+export const Persons = ({ day, deadByDateIndex, onClickOpenModalHandler }: Props): JSX.Element => {
   const dateDeadsRefs = useRef<HTMLDivElement[]>([])
   const [personsAreas, setPersonsAreas] = useState([])
 

@@ -1,5 +1,5 @@
 import React from "react"
-import { PersonStatue } from "../ItemsDrawer/PersonStatue"
+import { PersonStatue } from "../Person/PersonStatue"
 import styled from "@emotion/styled"
 import { personWithStoryWith } from "../../common/config"
 import { DeadPerson } from "../../common/types"

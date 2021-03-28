@@ -7,30 +7,40 @@ import { useRouter } from "next/router"
 import { DeadPersonModalWindow } from "../DeadPersonModalWindow/DeadPersonModalWindow"
 import { DeadPerson, DateDeadsWithStatuesAndStories } from "../../common/types"
 import { dateTimeFormat, dateTimeUrlFormat, numeralThousandsFormat } from "../../common/config"
+import { usePlausible } from "next-plausible"
+import { PlausibleEvents } from "../../common/plausibleEvents"
 
-export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props) => {
+export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props): JSX.Element => {
   const router = useRouter()
   const daysRefs = Array.from({ length: deadsWithStatuesAndStories.length }).map(() => createRef<HTMLDivElement>())
   const [activeDayUrl, setActiveDayUrl] = useState<DateDeadsWithStatuesAndStories>(deadsWithStatuesAndStories[0])
   const [scrolled, setScrolled] = useState<boolean>(false)
   const [modalContent, setModalContent] = useState<DeadPerson | undefined>(undefined)
+  const plausible = usePlausible()
 
   const onChangeActiveDayHandler = (day: DateDeadsWithStatuesAndStories) => {
     if (!moment(deadsWithStatuesAndStories[0].date).isSame(moment(day.date))) {
       router.push(`?d=${moment(day.date).format(dateTimeUrlFormat)}`, undefined, {
         shallow: true
       })
+      plausible(PlausibleEvents.ActiveDay, { props: { dateTime: day.date } })
     }
   }
 
   const onClickOpenModalHandler = (dayDead: DeadPerson) => {
     process.browser && window.document.body.classList.add("disable-scrolling")
     setModalContent(dayDead)
+    plausible(PlausibleEvents.OpenDeadPersonModalWindow, {
+      props: {
+        dayDeadId: dayDead.id
+      }
+    })
   }
 
   const onClickCloseModalHandler = () => {
     process.browser && window.document.body.classList.remove("disable-scrolling")
     setModalContent(undefined)
+    plausible(PlausibleEvents.CloseDeadPersonModalWindow)
   }
 
   useEffect(() => {
@@ -43,9 +53,10 @@ export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props) => {
       const scrollToRef = daysRefs.find((dayRef) => dayRef?.current.attributes.getNamedItem("data-date").value === activeDayUrl.date)
       if (!moment(deadsWithStatuesAndStories[0].date).isSame(moment(scrollToRef.current.attributes.getNamedItem("data-date").value)) && !scrolled) {
         scrollToRef?.current?.scrollIntoView()
+        plausible(PlausibleEvents.ScrollIntoDateView)
       }
     }
-  }, [daysRefs, deadsWithStatuesAndStories, router.query?.d, scrolled])
+  }, [daysRefs, deadsWithStatuesAndStories, plausible, router.query?.d, scrolled])
 
   useEffect(() => {
     const handleScroll = () => {

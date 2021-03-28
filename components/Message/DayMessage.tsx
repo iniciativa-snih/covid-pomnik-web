@@ -2,7 +2,7 @@ import React from "react"
 import styled from "@emotion/styled"
 import { Message } from "../../common/types"
 
-export const DayMessage = ({ message }: Props) => {
+export const DayMessage = ({ message }: Props): JSX.Element => {
   return <DayMessageWrapper>{message.message}</DayMessageWrapper>
 }
 

@@ -1,9 +1,9 @@
 import React from "react"
-import { PersonStatue } from "./ItemsDrawer/PersonStatue"
+import { PersonStatue } from "./PersonStatue"
 import styled from "@emotion/styled"
-import { personSize } from "../common/config"
+import { personSize } from "../../common/config"
 
-export const Person = ({ dateDeadsRefs, personPositionArea, personName }) => {
+export const Person = ({ dateDeadsRefs, personPositionArea, personName }): JSX.Element => {
   return (
     <PersonWrapper
       ref={(el) => dateDeadsRefs.current.push(el)}

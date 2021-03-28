@@ -4,13 +4,17 @@ import "@csstools/normalize.css"
 import { globalStyles } from "../styles/globalStyle"
 import { DefaultSeo } from "next-seo"
 import SEO from "../next-seo.config"
+import PlausibleProvider from "next-plausible"
+import { dev, plausibleDomain } from "../common/config"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       {globalStyles}
       <DefaultSeo {...SEO} />
-      <Component {...pageProps} />
+      <PlausibleProvider domain={plausibleDomain} enabled={!dev}>
+        <Component {...pageProps} />
+      </PlausibleProvider>
     </>
   )
 }
