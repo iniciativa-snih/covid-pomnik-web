@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://test.pamatnikpandemie.cz
+
+# Sitemaps
+Sitemap: https://test.pamatnikpandemie.cz/sitemap.xml
