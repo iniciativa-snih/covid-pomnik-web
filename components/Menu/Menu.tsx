@@ -19,7 +19,7 @@ export const Menu = (): JSX.Element => {
 
   return (
     <Nav>
-      <MenuComponentWithStyle right noShadow isOpen={menuIsOpen} closeCallback={setMenuIsOpenHandler}>
+      <MenuComponentWithStyle right noShadow isOpen={menuIsOpen} closeCallback={() => setMenuIsOpenHandler(false)}>
         <MenuContentWrapper>
           <div>
             <ul>
@@ -44,12 +44,12 @@ export const Menu = (): JSX.Element => {
               se jménem, datem úmrtí, věkem a příběhem.
             </p>
 
-            <Image src="/images/snih-logo.png" alt="snih-logo.png" width={210} height={54} />
+            <Image src="/images/snih-logo.png" alt="snih-logo.png" width={210} height={146} />
           </div>
         </MenuContentWrapper>
       </MenuComponentWithStyle>
 
-      <MenuIconWithStyle isOpen={menuIsOpen} menuClicked={setMenuIsOpenHandler} width={22} height={16} strokeWidth={3} color="rgba(0, 0, 0, 0.8)" />
+      <MenuIconWithStyle isOpen={menuIsOpen} menuClicked={() => setMenuIsOpenHandler(true)} width={22} height={16} strokeWidth={3} color="rgba(0, 0, 0, 0.8)" />
     </Nav>
   )
 }

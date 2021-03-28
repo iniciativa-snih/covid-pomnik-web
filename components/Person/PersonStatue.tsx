@@ -6,7 +6,14 @@ import styled from "@emotion/styled"
 export const PersonStatue = ({ personName, withStory }: Props): JSX.Element => {
   return (
     <PersonStatueWrapper withStory={withStory}>
-      <Image src={`/images/persons/${personName}.png`} alt={personName} width={personSize.width} height={personSize.height} objectFit="contain" />
+      <Image
+        src={`/images/persons/${personName}.png`}
+        alt={personName}
+        width={personSize.width}
+        height={personSize.height}
+        objectFit="contain"
+        loading="eager"
+      />
     </PersonStatueWrapper>
   )
 }
