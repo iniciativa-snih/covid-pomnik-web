@@ -3,6 +3,7 @@ import { PersonStatue } from "../Person/PersonStatue"
 import styled from "@emotion/styled"
 import { personWithStoryWith } from "../../common/config"
 import { DeadPerson } from "../../common/types"
+import { sm, xs } from "../../styles/mediaQuery"
 
 export const PersonWithStory = ({ dateDeadsRefs, dayDead, personPositionArea, onClickOpenModal }: Props) => {
   const substringStory = dayDead.story.length > 150 ? `${dayDead.story.substring(0, 150)}... ` : dayDead.story
@@ -14,13 +15,14 @@ export const PersonWithStory = ({ dateDeadsRefs, dayDead, personPositionArea, on
         top: personPositionArea?.top,
         left: personPositionArea?.left,
         zIndex: 997 // personPositionArea?.zIndex
-      }}>
+      }}
+      onClick={onClickOpenModal}>
       <PersonStatue personName={dayDead.statue} withStory={true} />
 
       <StoryWrapper>
         <Name>{`${dayDead.name}, ${dayDead.city ? `${dayDead.city},` : ""} ${dayDead.age} let`}</Name>
         <Story>
-          {substringStory} <span onClick={onClickOpenModal}>celý příběh</span>
+          {substringStory} <span>celý příběh</span>
         </Story>
       </StoryWrapper>
     </PersonWithStoryWrapper>
@@ -47,9 +49,20 @@ const PersonWithStoryWrapper = styled.div`
   animation: fadeIn ease 0.5s;
   border-radius: 3px;
   padding: 5px 10px 5px 5px;
+  cursor: pointer;
+  
+  ${xs} {
+    width: 100%;
+    padding: 0;
+  }
+}
 `
 
-const StoryWrapper = styled.div``
+const StoryWrapper = styled.div`
+  ${sm} {
+    padding-right: 5px;
+  }
+`
 
 const Name = styled.div`
   margin-bottom: 5px;

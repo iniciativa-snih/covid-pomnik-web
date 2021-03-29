@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { sm } from "../../styles/mediaQuery"
 
 export const DeadPersonModalWindow = ({ children, onCloseModal }: Props): JSX.Element => {
   return (
@@ -39,6 +40,10 @@ const ModalInner = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+
+  ${sm} {
+    width: 80%;
+  }
 `
 
 const Close = styled.div`

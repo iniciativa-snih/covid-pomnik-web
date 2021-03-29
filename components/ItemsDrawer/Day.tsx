@@ -1,7 +1,6 @@
 import React, { Dispatch, LegacyRef, SetStateAction, useState } from "react"
 import { Persons } from "../Persons/Persons"
 import VisibilitySensor from "react-visibility-sensor"
-import styled from "@emotion/styled"
 import { DayMessages } from "../Message/DayMessages"
 import { DeadPerson, DateDeadsWithStatuesAndStories } from "../../common/types"
 
@@ -21,7 +20,7 @@ export const Day = ({ day, deadByDateIndex, onChangeActive, dayRef, onClickOpenM
       offset={{ top: -1000, bottom: -1000 }}
       partialVisibility>
       {() => (
-        <PersonsWrapper ref={dayRef} data-date={day.date}>
+        <div className="PersonsWrapper" ref={dayRef} data-date={day.date}>
           {isVisible && (
             <VisibilitySensor
               scrollCheck={true}
@@ -29,13 +28,13 @@ export const Day = ({ day, deadByDateIndex, onChangeActive, dayRef, onClickOpenM
               offset={{ top: 200, bottom: 200 }}
               partialVisibility
               onChange={(isActive) => isActive && onChangeActive(day)}>
-              <Height>
+              <div className="height">
                 {day.messages.length > 0 && <DayMessages messages={day.messages} />}
                 <Persons day={day} deadByDateIndex={deadByDateIndex} onClickOpenModalHandler={onClickOpenModalHandler} />
-              </Height>
+              </div>
             </VisibilitySensor>
           )}
-        </PersonsWrapper>
+        </div>
       )}
     </VisibilitySensor>
   )
@@ -49,12 +48,3 @@ interface Props {
   dayRef: LegacyRef<HTMLDivElement>
   onClickOpenModalHandler: (dayDead: DeadPerson) => void
 }
-
-const PersonsWrapper = styled.div`
-  height: 100vh;
-  position: relative;
-`
-
-const Height = styled.div`
-  height: 100%;
-`

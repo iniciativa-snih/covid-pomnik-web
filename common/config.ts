@@ -5,7 +5,7 @@ export const personSize = {
 
 export const personWithStoryWith = {
   width: 400,
-  height: 80
+  height: 90
 }
 
 export const dev = process.env.NODE_ENV !== "production"

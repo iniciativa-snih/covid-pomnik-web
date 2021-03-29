@@ -19,7 +19,7 @@ export const Menu = (): JSX.Element => {
 
   return (
     <Nav>
-      <MenuComponentWithStyle right noShadow isOpen={menuIsOpen} closeCallback={() => setMenuIsOpenHandler(false)}>
+      <MenuComponentWithStyle left noShadow isOpen={menuIsOpen} closeCallback={() => setMenuIsOpenHandler(false)}>
         <MenuContentWrapper>
           <div>
             <ul>

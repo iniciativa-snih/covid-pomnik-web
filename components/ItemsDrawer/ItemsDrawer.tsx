@@ -9,6 +9,7 @@ import { DeadPerson, DateDeadsWithStatuesAndStories } from "../../common/types"
 import { dateTimeFormat, dateTimeUrlFormat, numeralThousandsFormat } from "../../common/config"
 import { usePlausible } from "next-plausible"
 import { PlausibleEvents } from "../../common/plausibleEvents"
+import { sm } from "../../styles/mediaQuery"
 
 export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props): JSX.Element => {
   const router = useRouter()
@@ -117,4 +118,8 @@ const ActiveDate = styled.div`
   border-top-left-radius: 3px;
   border-bottom-left-radius: 3px;
   line-height: 1.3;
+
+  ${sm} {
+    margin-bottom: 50px;
+  }
 `

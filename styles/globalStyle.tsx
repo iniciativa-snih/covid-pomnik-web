@@ -15,6 +15,7 @@ export const globalStyles = (
         font-family: "Roboto", sans-serif;
         color: rgba(0, 0, 0, 0.7);
         font-size: 24px;
+        overflow-x: hidden;
 
         .disable-scrolling {
           overflow: hidden;
@@ -43,6 +44,26 @@ export const globalStyles = (
         text-align: center;
         padding: 5px 0 5px 0;
         z-index: 999;
+      }
+
+      .PersonsWrapper {
+        height: 100vh;
+        position: relative;
+      }
+
+      .height {
+        height: 100%;
+      }
+
+      .MessagesWrapper {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        z-index: 998;
+        position: relative;
+        pointer-events: none;
       }
     `}
   />

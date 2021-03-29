@@ -10,14 +10,14 @@ export const Persons = ({ day, deadByDateIndex, onClickOpenModalHandler }: Props
 
   useEffect(() => {
     const maxSearchIterations = 5
-    const personMinX = 20
-    const personWithStoryMinX = 20
+    const personMinX = 5
+    const personWithStoryMinX = 5
 
-    const personMaxX = window.outerWidth - personSize.width * 2
-    const personWithStoryMaxX = window.outerWidth - personWithStoryWith.width
+    const personMaxX = window.outerWidth - 5 - personSize.width
+    const personWithStoryMaxX = window.outerWidth - 5 - personWithStoryWith.width
 
-    const min_y = personSize.height
-    const max_y = window.outerHeight - personSize.height
+    const min_y = 5
+    const max_y = window.outerHeight
 
     const filled_areas = []
     let index = 0
@@ -67,8 +67,13 @@ export const Persons = ({ day, deadByDateIndex, onClickOpenModalHandler }: Props
         const conditionedMaxX = dateDeadsRef.clientWidth > personSize.width ? personWithStoryMaxX : personMaxX
         const conditionedMinX = dateDeadsRef.clientWidth > personSize.width ? personWithStoryMinX : personMinX
 
-        rand_x = Math.round(personMinX + (conditionedMaxX - conditionedMinX) * (Math.random() % 1))
+        if (process.browser && window.outerWidth <= 576 && dateDeadsRef.clientWidth > personSize.width) {
+          rand_x = 0
+        } else {
+          rand_x = Math.round(personMinX + (conditionedMaxX - conditionedMinX) * (Math.random() % 1))
+        }
         rand_y = Math.round(min_y + (max_y - min_y) * (Math.random() % 1))
+
         area = {
           x: rand_x,
           y: rand_y,

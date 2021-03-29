@@ -9,6 +9,7 @@ import { Menu } from "../components/Menu/Menu"
 import { adminApiUrl, mainEmailAddress } from "../common/config"
 import { apiFetcher } from "../common/apiFetcher"
 import { DateDead, DateDeadsWithStatuesAndStories, Message, PersonStory } from "../common/types"
+import { sm, smMin } from "../styles/mediaQuery"
 
 const dev = process.env.NODE_ENV !== "production"
 
@@ -20,21 +21,24 @@ const Index = ({ deadsWithStatuesAndStories }: Props) => {
 
         <HeaderText>
           <h1>Památník obětí pandemie v České republice</h1>
-          <p>
+          <ParagraphMobile>
+            Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk.
+          </ParagraphMobile>
+          <Paragraph>
             Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát
             prostor pozůstalým. A tím není jen blízký příbuzný, nýbrž každý, kdo pozůstal. Každý, komu zemřelý chybí, a kdo pociťuje jeho odchod jako ztrátu, s
             níž je třeba se vyrovnat. Rozloučení, na jaká jsme byli při odchodech našich blízkých zvyklí, se v těchto měsících nemohou uskutečnit. Smutek
             potřebujeme sdílet, třeba i ve virtuální podobě.
-          </p>
-          <p>
+          </Paragraph>
+          <Paragraph>
             Desítky tisíc obětí nejsou jen údaj, každá oběť žila svůj jedinečný příběh, který pandemie náhle ukončila. Nyní je na nás, abychom nesli jejich
             památku jako připomínku lidské křehkosti a zranitelnosti. Zůstávají součástí nás všech, kteří odmítáme lhostejnost a víme, že bez soucitu a ochoty
             navzájem se podepřít ve smutku by život byl nesnesitelně chudý.
-          </p>
-          <p>
+          </Paragraph>
+          <Paragraph>
             Pokud chcete přidat příběh, svou vzpomínku na vašeho blízkého, pošlete email na <a href={`mailto:${mainEmailAddress}`}>{mainEmailAddress}</a> se
             jménem, datem úmrtí, věkem a příběhem.
-          </p>
+          </Paragraph>
         </HeaderText>
 
         <ItemsDrawer deadsWithStatuesAndStories={deadsWithStatuesAndStories} />
@@ -88,6 +92,30 @@ const HeaderText = styled.div`
   p {
     font-size: 15px;
     line-height: 1.6;
+  }
+
+  ${sm} {
+    padding: 50px 10px 10px 10px;
+
+    h1 {
+      font-size: 24px;
+    }
+  }
+`
+
+const ParagraphMobile = styled.p`
+  ${sm} {
+    display: block;
+  }
+
+  ${smMin} {
+    display: none;
+  }
+`
+
+const Paragraph = styled.p`
+  ${sm} {
+    display: none;
   }
 `
 
