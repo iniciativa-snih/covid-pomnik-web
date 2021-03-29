@@ -24,6 +24,13 @@ export const Menu = (): JSX.Element => {
           <div>
             <ul>
               <li>
+                <Link href="https://www.iniciativa-snih.cz/">
+                  <a title="Iniciativa Sníh" target="_blank" rel="noopener noreferrer">
+                    Iniciativa Sníh
+                  </a>
+                </Link>
+              </li>
+              <li>
                 <a href="#">GDPR</a>
               </li>
               <li>
@@ -44,7 +51,11 @@ export const Menu = (): JSX.Element => {
               se jménem, datem úmrtí, věkem a příběhem.
             </p>
 
-            <Image src="/images/snih-logo.png" alt="snih-logo.png" width={210} height={146} />
+            <Link href="https://www.iniciativa-snih.cz/">
+              <a title="Iniciativa Sníh" target="_blank" rel="noopener noreferrer">
+                <Image src="/images/logo_Iniciativa_snih_09.svg" alt="logo_Iniciativa_snih_09.svg" width={300} height={56} />
+              </a>
+            </Link>
           </div>
         </MenuContentWrapper>
       </MenuComponentWithStyle>

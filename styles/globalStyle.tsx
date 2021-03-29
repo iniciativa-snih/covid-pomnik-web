@@ -22,6 +22,16 @@ export const globalStyles = (
         }
       }
 
+      .content {
+        display: block;
+        flex: 0 0 83.33333333%;
+        max-width: 83.33333333%;
+
+        section {
+          margin: 40px 0 40px 0;
+        }
+      }
+
       @keyframes fadeIn {
         0% {
           opacity: 0;
