@@ -22,6 +22,25 @@ export const Menu = (): JSX.Element => {
       <MenuComponentWithStyle left noShadow isOpen={menuIsOpen} closeCallback={() => setMenuIsOpenHandler(false)}>
         <MenuContentWrapper>
           <div>
+            <h2>Památník obětí pandemie v České republice</h2>
+            <h3>Pravidla pro zasílání informací</h3>
+            <ol>
+              <li>Vážíme se vašich zpráv a informací ke zveřejnění</li>
+              <li>Zasílejte výhradně pouze informace týkající se na zemřelé na COVID 19 v České republice</li>
+              <li>
+                Pro zveřejnění potřebujeme informace minimálně s křestním jménem a iniciály příjmení a s krátkou vzpomínkou, na vaše přání je možné zveřejnit
+                celé příjmení, případně i fotografii
+              </li>
+              <li>Pro umístění v časové řadě památníku je důležité, abyste zaslali i datum úmrtí</li>
+              <li>V případě nesrovnalostí či sporů bude jednotlivý záznam odstraněný a po dořešení bude možnost znovu záznam umístit</li>
+              <li>
+                Zasílejte prosím na adresu{" "}
+                <a href={`mailto:${mainEmailAddress}`} rel="noopener noreferrer">
+                  {mainEmailAddress}
+                </a>
+              </li>
+            </ol>
+
             <ul>
               <li>
                 <Link href="https://www.iniciativa-snih.cz/">
@@ -29,9 +48,6 @@ export const Menu = (): JSX.Element => {
                     Iniciativa Sníh
                   </a>
                 </Link>
-              </li>
-              <li>
-                <a href="#">GDPR</a>
               </li>
               <li>
                 <Link href="https://www.facebook.com/IniciativaSnih">
@@ -42,15 +58,8 @@ export const Menu = (): JSX.Element => {
               </li>
             </ul>
           </div>
-          <div>
-            <p>
-              Pokud chcete přidat příběh, svou vzpomínku na vašeho blízkého, pošlete email na{" "}
-              <a href={`mailto:${mainEmailAddress}`} rel="noopener noreferrer">
-                {mainEmailAddress}
-              </a>{" "}
-              se jménem, datem úmrtí, věkem a příběhem.
-            </p>
 
+          <div>
             <Link href="https://www.iniciativa-snih.cz/">
               <a title="Iniciativa Sníh" target="_blank" rel="noopener noreferrer">
                 <Image src="/images/logo_Iniciativa_snih_09.svg" alt="logo_Iniciativa_snih_09.svg" width={300} height={56} />
@@ -94,8 +103,18 @@ const MenuContentWrapper = styled.div`
   justify-content: space-between;
 
   div {
+    h2,
     h3 {
       margin-top: 0;
+    }
+
+    ol {
+      margin-bottom: 30px;
+
+      li {
+        margin-bottom: 5px;
+        line-height: 1.3;
+      }
     }
 
     ul {
