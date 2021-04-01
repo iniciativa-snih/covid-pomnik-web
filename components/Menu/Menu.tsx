@@ -25,14 +25,14 @@ export const Menu = (): JSX.Element => {
             <h2>Památník obětí pandemie v České republice</h2>
             <h3>Pravidla pro zasílání informací</h3>
             <ol>
-              <li>Vážíme se vašich zpráv a informací ke zveřejnění</li>
-              <li>Zasílejte výhradně pouze informace týkající se na zemřelé na COVID 19 v České republice</li>
+              <li>Vážíme se vašich zpráv a informací ke zveřejnění.</li>
+              <li>Zasílejte, prosíme, pouze informace týkající se zemřelých na COVID 19 v České republice.</li>
               <li>
-                Pro zveřejnění potřebujeme informace minimálně s křestním jménem a iniciály příjmení a s krátkou vzpomínkou, na vaše přání je možné zveřejnit
-                celé příjmení, případně i fotografii
+                Pro zveřejnění potřebujeme minimálně: křestní jméno, iniciál příjení, datum úmrtí a krátkou vzpomínku, případně věk.
               </li>
-              <li>Pro umístění v časové řadě památníku je důležité, abyste zaslali i datum úmrtí</li>
-              <li>V případě nesrovnalostí či sporů bude jednotlivý záznam odstraněný a po dořešení bude možnost znovu záznam umístit</li>
+              <li>
+                V případě nesrovnalostí či sporů bude jednotlivý záznam odstraněný a po dořešení bude možnost znovu
+                záznam umístit.</li>
               <li>
                 Zasílejte prosím na adresu{" "}
                 <a href={`mailto:${mainEmailAddress}`} rel="noopener noreferrer">
