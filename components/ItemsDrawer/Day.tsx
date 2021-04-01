@@ -17,7 +17,7 @@ export const Day = ({ day, deadByDateIndex, onChangeActive, dayRef, onClickOpenM
       resizeCheck={true}
       onChange={onChangeVisibility}
       active={!isVisible}
-      offset={{ top: -1000, bottom: -1000 }}
+      offset={{ top: -1500, bottom: -1500 }}
       partialVisibility>
       {() => (
         <div className="PersonsWrapper" ref={dayRef} data-date={day.date}>

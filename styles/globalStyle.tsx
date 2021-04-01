@@ -71,7 +71,6 @@ export const globalStyles = (
         align-items: center;
         justify-content: center;
         text-align: center;
-        z-index: 998;
         position: relative;
         pointer-events: none;
       }

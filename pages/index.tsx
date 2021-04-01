@@ -55,7 +55,7 @@ interface Props {
 
 export const getStaticProps: GetStaticProps = async (): Promise<GetStaticPropsResult<Props>> => {
   const deadsByDate: DateDead[] = await apiFetcher(`${adminApiUrl}/api/deads`)
-  const stories: PersonStory[] = await apiFetcher(`${adminApiUrl}/api/stories`)
+  const stories: PersonStory[] = await apiFetcher(`${adminApiUrl}/api/stories?api_key=${process.env.API_KEY}`)
   const messages: Message[] = await apiFetcher(`${adminApiUrl}/api/messages`)
 
   const deadsWithStatuesAndStories = deadsByDate.map((day) => {
