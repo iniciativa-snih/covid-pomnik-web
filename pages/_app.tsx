@@ -6,6 +6,7 @@ import { DefaultSeo } from "next-seo"
 import SEO from "../next-seo.config"
 import PlausibleProvider from "next-plausible"
 import { dev, plausibleDomain } from "../common/config"
+import { ParallaxProvider } from "react-scroll-parallax"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,7 +14,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       {globalStyles}
       <DefaultSeo {...SEO} />
       <PlausibleProvider domain={plausibleDomain} enabled={!dev}>
-        <Component {...pageProps} />
+        <ParallaxProvider>
+          <Component {...pageProps} />
+        </ParallaxProvider>
       </PlausibleProvider>
     </>
   )
