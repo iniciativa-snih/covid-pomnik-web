@@ -19,6 +19,24 @@ export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props): JSX.Element 
   const [modalContent, setModalContent] = useState<DeadPerson | undefined>(undefined)
   const plausible = usePlausible()
 
+  const getDeadsFrequencyInMinutes = (deads: number) => {
+    const deadsPerMinute = Math.round((24 * 60) / deads)
+
+    if (deadsPerMinute === 0) {
+      return null
+    }
+
+    if (deadsPerMinute === 1) {
+      return ` (každou ${deadsPerMinute} minutu)`
+    }
+
+    if (deadsPerMinute >= 2 && deadsPerMinute <= 4) {
+      return ` (každé ${deadsPerMinute} minuty)`
+    }
+
+    return ` (každých ${deadsPerMinute} minut)`
+  }
+
   const onChangeActiveDayHandler = (day: DateDeadsWithStatuesAndStories) => {
     if (!moment(deadsWithStatuesAndStories[0].date).isSame(moment(day.date))) {
       router.push(`?d=${moment(day.date).format(dateTimeUrlFormat)}`, undefined, {
@@ -82,7 +100,10 @@ export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props): JSX.Element 
 
       <ActiveDate>
         <div>{moment(activeDayUrl.date).format(dateTimeFormat)}</div>
-        <div>Úmrtí: {`${numeral(activeDayUrl.daily.length).format(numeralThousandsFormat)}`}</div>
+        <div>
+          Úmrtí: {`${numeral(activeDayUrl.daily.length).format(numeralThousandsFormat)}`}
+          {getDeadsFrequencyInMinutes(activeDayUrl.daily.length)}
+        </div>
         <div>Celkem úmrtí: {`${numeral(activeDayUrl.cumulative).format(numeralThousandsFormat)}`}</div>
       </ActiveDate>
 
