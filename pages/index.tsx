@@ -81,21 +81,30 @@ export const getStaticProps: GetStaticProps = async (): Promise<GetStaticPropsRe
 }
 
 const HeaderText = styled.div`
-  text-align: center;
-  padding: 40px 40px 40px 20px;
+  margin: 0 auto;
+  text-align: justify;
+  padding: 20px;
   top: 0;
   left: 0;
   z-index: 999;
   animation: fadeIn ease 1s;
   color: rgb(0 0 0 / 80%);
 
+  h1 {
+    text-align: center;
+  }
+
   p {
     font-size: 15px;
     line-height: 1.6;
   }
 
+  ${smMin} {
+    max-width: 60%;
+  }
+
   ${sm} {
-    padding: 50px 10px 10px 10px;
+    padding: 50px 20px 10px 20px;
 
     h1 {
       font-size: 24px;
