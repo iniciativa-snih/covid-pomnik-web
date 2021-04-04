@@ -6,7 +6,14 @@ import { DeadPerson } from "../../common/types"
 import { sm, xs } from "../../styles/mediaQuery"
 
 export const PersonWithStory = ({ dateDeadsRefs, dayDead, personPositionArea, onClickOpenModal }: Props) => {
-  const substringStory = dayDead.story.length > 150 ? `${dayDead.story.substring(0, 150)}... ` : dayDead.story
+  const substringStory =
+    dayDead.story.length > 150 ? (
+      <>
+        `${dayDead.story.substring(0, 150)}... `<span>celý příběh</span>
+      </>
+    ) : (
+      dayDead.story
+    )
 
   return (
     <PersonWithStoryWrapper
@@ -21,9 +28,7 @@ export const PersonWithStory = ({ dateDeadsRefs, dayDead, personPositionArea, on
 
       <StoryWrapper>
         <Name>{`${dayDead.name}, ${dayDead.city ? `${dayDead.city},` : ""} ${dayDead.age} let`}</Name>
-        <Story>
-          {substringStory} <span>celý příběh</span>
-        </Story>
+        <Story>{substringStory}</Story>
       </StoryWrapper>
     </PersonWithStoryWrapper>
   )

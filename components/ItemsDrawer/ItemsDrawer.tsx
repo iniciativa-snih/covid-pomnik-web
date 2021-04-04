@@ -20,6 +20,10 @@ export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props): JSX.Element 
   const plausible = usePlausible()
 
   const getDeadsFrequencyInMinutes = (deads: number) => {
+    if (deads === 0) {
+      return null
+    }
+
     const deadsPerMinute = Math.round((24 * 60) / deads)
 
     if (deadsPerMinute === 0) {

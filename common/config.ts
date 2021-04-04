@@ -15,7 +15,7 @@ export const dateTimeUrlFormat = "YYYY-MM-DD"
 export const numeralThousandsFormat = "0,0"
 
 export const mainRootWebUrl = "https://test.pamatnikpandemie.cz"
-export const mainEmailAddress = "info@pamatnikpandemie.cz"
+export const mainEmailAddress = "pribehy@pamatnikpandemie.cz"
 export const adminApiUrl = "https://admin.pamatnikpandemie.cz"
 
 export const plausibleDomain = "pamatnikpandemie.cz"

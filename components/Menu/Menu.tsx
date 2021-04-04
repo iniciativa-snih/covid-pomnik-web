@@ -22,24 +22,13 @@ export const Menu = (): JSX.Element => {
       <MenuComponentWithStyle left noShadow isOpen={menuIsOpen} closeCallback={() => setMenuIsOpenHandler(false)}>
         <MenuContentWrapper>
           <div>
-            <h2>Památník obětí pandemie v České republice</h2>
-            <h3>Pravidla pro zasílání informací</h3>
-            <ol>
-              <li>Vážíme se vašich zpráv a informací ke zveřejnění.</li>
-              <li>Zasílejte, prosíme, pouze informace týkající se zemřelých na COVID 19 v České republice.</li>
-              <li>
-                Pro zveřejnění potřebujeme minimálně: křestní jméno, iniciál příjení, datum úmrtí a krátkou vzpomínku, případně věk.
-              </li>
-              <li>
-                V případě nesrovnalostí či sporů bude jednotlivý záznam odstraněný a po dořešení bude možnost znovu
-                záznam umístit.</li>
-              <li>
-                Zasílejte prosím na adresu{" "}
-                <a href={`mailto:${mainEmailAddress}`} rel="noopener noreferrer">
-                  {mainEmailAddress}
-                </a>
-              </li>
-            </ol>
+            <p>
+              Budeme rádi, přidáte-li na tento webový Památník pandemie příběh svého blízkého zemřelého. Připište, prosím, jeho jméno, věk a datum úmrtí a my
+              jej uveřejníme. Tím společně s vámi uctíme jeho památku. Děkujeme!{" "}
+              <a href={`mailto:${mainEmailAddress}`} rel="noopener noreferrer">
+                {mainEmailAddress}
+              </a>
+            </p>
 
             <ul>
               <li>

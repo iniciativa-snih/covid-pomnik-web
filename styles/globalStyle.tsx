@@ -17,6 +17,12 @@ export const globalStyles = (
         font-size: 24px;
         overflow-x: hidden;
 
+        main {
+          scroll-snap-type: proximity;
+          scroll-snap-points-y: repeat(100vh);
+          scroll-snap-type: y proximity;
+        }
+
         .disable-scrolling {
           overflow: hidden;
         }
@@ -59,6 +65,7 @@ export const globalStyles = (
       .PersonsWrapper {
         height: 100vh;
         position: relative;
+        scroll-snap-align: start;
       }
 
       .height {
