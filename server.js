@@ -12,11 +12,11 @@ app.prepare().then(() => {
   const server = express()
 
   server.use((req, res, next) => {
-    const hostname = req.hostname === "www.test.pamatnikpandemie.cz" ? "test.pamatnikpandemie.cz" : req.hostname
-    // const hostname = req.hostname === "www.pamatnikpandemie.cz" ? "pamatnikpandemie.cz" : req.hostname
+    // const hostname = req.hostname === "www.test.pamatnikpandemie.cz" ? "test.pamatnikpandemie.cz" : req.hostname
+    const hostname = req.hostname === "www.pamatnikpandemie.cz" ? "pamatnikpandemie.cz" : req.hostname
 
-    if (req.headers["x-forwarded-proto"] === "http" || req.hostname === "www.test.pamatnikpandemie.cz") {
-      // if (req.headers["x-forwarded-proto"] === "http" || req.hostname === "www.pamatnikpandemie.cz") {
+    // if (req.headers["x-forwarded-proto"] === "http" || req.hostname === "www.test.pamatnikpandemie.cz") {
+    if (req.headers["x-forwarded-proto"] === "http" || req.hostname === "www.pamatnikpandemie.cz") {
       res.redirect(301, `https://${hostname}${req.url}`)
       return
     }

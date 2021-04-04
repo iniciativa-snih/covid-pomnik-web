@@ -20,25 +20,17 @@ const Index = ({ deadsWithStatuesAndStories }: Props) => {
         <Menu />
 
         <HeaderText>
-          <h1>Památník obětí pandemie v České republice</h1>
+          <h1>Památník obětí pandemie</h1>
           <ParagraphMobile>
-            Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk.
+            Desítky tisíc obětí nejsou jen údaj, každá oběť žila svůj jedinečný příběh, který pandemie náhle ukončila. Nyní je na nás, abychom nesli jejich
+            památku. Pokud chcete přidat vzpomínku na vašeho blízkého, <a href="https://admin.pamatnikpandemie.cz/vzpominka">pokračujte zde</a>.
           </ParagraphMobile>
-          <Paragraph>
-            Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát
-            prostor pozůstalým. A tím není jen blízký příbuzný, nýbrž každý, kdo pozůstal. Každý, komu zemřelý chybí, a kdo pociťuje jeho odchod jako ztrátu, s
-            níž je třeba se vyrovnat. Rozloučení, na jaká jsme byli při odchodech našich blízkých zvyklí, se v těchto měsících nemohou uskutečnit. Smutek
-            potřebujeme sdílet, třeba i ve virtuální podobě.
-          </Paragraph>
           <Paragraph>
             Desítky tisíc obětí nejsou jen údaj, každá oběť žila svůj jedinečný příběh, který pandemie náhle ukončila. Nyní je na nás, abychom nesli jejich
             památku jako připomínku lidské křehkosti a zranitelnosti. Zůstávají součástí nás všech, kteří odmítáme lhostejnost a víme, že bez soucitu a ochoty
-            navzájem se podepřít ve smutku by život byl nesnesitelně chudý.
+            navzájem se podepřít ve smutku by život byl nesnesitelně chudý. Pokud chcete přidat vzpomínku na vašeho blízkého, <a href="https://admin.pamatnikpandemie.cz/vzpominka">pokračujte zde</a>.
           </Paragraph>
-          <Paragraph>
-            Pokud chcete přidat příběh, svou vzpomínku na vašeho blízkého, pošlete email na <a href={`mailto:${mainEmailAddress}`}>{mainEmailAddress}</a> se
-            jménem, datem úmrtí, věkem a příběhem.
-          </Paragraph>
+          
         </HeaderText>
 
         <ItemsDrawer deadsWithStatuesAndStories={deadsWithStatuesAndStories} />

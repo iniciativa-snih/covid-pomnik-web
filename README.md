@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://test.pamatnikpandemie.cz/">
+  <a href="https://www.pamatnikpandemie.cz/">
     <img src="https://www.iniciativa-snih.cz/wp-content/uploads/2021/03/snih-logo.png" width="210">
     <h1 align="center">Památník obětí pandemie v České republice</h1>
   </a>

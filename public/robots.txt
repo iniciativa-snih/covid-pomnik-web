@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://test.pamatnikpandemie.cz
+Host: https://www.pamatnikpandemie.cz
 
 # Sitemaps
-Sitemap: https://test.pamatnikpandemie.cz/sitemap.xml
+Sitemap: https://www.pamatnikpandemie.cz/sitemap.xml

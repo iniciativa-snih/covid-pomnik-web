@@ -9,7 +9,7 @@ export const PersonWithStory = ({ dateDeadsRefs, dayDead, personPositionArea, on
   const substringStory =
     dayDead.story.length > 150 ? (
       <>
-        `${dayDead.story.substring(0, 150)}... `<span>celý příběh</span>
+        {dayDead.story.substring(0, 150)}... <span>celý příběh</span>
       </>
     ) : (
       dayDead.story

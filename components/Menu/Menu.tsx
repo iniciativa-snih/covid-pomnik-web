@@ -22,15 +22,26 @@ export const Menu = (): JSX.Element => {
       <MenuComponentWithStyle left noShadow isOpen={menuIsOpen} closeCallback={() => setMenuIsOpenHandler(false)}>
         <MenuContentWrapper>
           <div>
+            <h1>Památník obětí pandemie</h1>
+
             <p>
-              Budeme rádi, přidáte-li na tento webový Památník pandemie příběh svého blízkého zemřelého. Připište, prosím, jeho jméno, věk a datum úmrtí a my
-              jej uveřejníme. Tím společně s vámi uctíme jeho památku. Děkujeme!{" "}
-              <a href={`mailto:${mainEmailAddress}`} rel="noopener noreferrer">
-                {mainEmailAddress}
-              </a>
+              Památník obětí pandemie ve své elektronické podobě má dát příležitost virtuálně sdílet smutek i účast, empatii i stesk. Má připomenout oběti a dát
+              prostor pozůstalým. A tím není jen blízký příbuzný, nýbrž každý, kdo pozůstal. 
+            </p>
+            <p>
+              Každý, komu zemřelý chybí, a kdo pociťuje jeho odchod jako ztrátu, s
+              níž je třeba se vyrovnat. Rozloučení, na jaká jsme byli při odchodech našich blízkých zvyklí, se v těchto měsících nemohou uskutečnit. Smutek
+              potřebujeme sdílet, třeba i ve virtuální podobě.
             </p>
 
             <ul>
+              <li>
+                <Link href={`mailto:${mainEmailAddress}`}>
+                  <a title={`mailto:${mainEmailAddress}`}>
+                    {mainEmailAddress}
+                  </a>
+                </Link>
+              </li>
               <li>
                 <Link href="https://www.iniciativa-snih.cz/">
                   <a title="Iniciativa Sníh" target="_blank" rel="noopener noreferrer">
