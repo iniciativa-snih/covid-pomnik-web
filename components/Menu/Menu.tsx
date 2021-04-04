@@ -36,6 +36,13 @@ export const Menu = (): JSX.Element => {
 
             <ul>
               <li>
+                <Link href="https://admin.pamatnikpandemie.cz/vzpominka">
+                  <a title="Přidat vzpomínku" target="_blank" rel="noopener noreferrer">
+                    Přidat vzpomínku
+                  </a>
+                </Link>
+              </li>
+              <li>
                 <Link href={`mailto:${mainEmailAddress}`}>
                   <a title={`mailto:${mainEmailAddress}`}>
                     {mainEmailAddress}
