@@ -46,7 +46,7 @@ export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props): JSX.Element 
       router.push(`?d=${moment(day.date).format(dateTimeUrlFormat)}`, undefined, {
         shallow: true
       })
-      plausible(PlausibleEvents.ActiveDay, { props: { dateTime: day.date } })
+      // plausible(PlausibleEvents.ActiveDay, { props: { dateTime: day.date } })
     }
   }
 
@@ -76,7 +76,7 @@ export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props): JSX.Element 
       const scrollToRef = daysRefs.find((dayRef) => dayRef?.current.attributes.getNamedItem("data-date").value === activeDayUrl.date)
       if (!moment(deadsWithStatuesAndStories[0].date).isSame(moment(scrollToRef.current.attributes.getNamedItem("data-date").value)) && !scrolled) {
         scrollToRef?.current?.scrollIntoView()
-        plausible(PlausibleEvents.ScrollIntoDateView)
+        // plausible(PlausibleEvents.ScrollIntoDateView)
       }
     }
   }, [daysRefs, deadsWithStatuesAndStories, plausible, router.query?.d, scrolled])
