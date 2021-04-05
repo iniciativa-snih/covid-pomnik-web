@@ -13,7 +13,7 @@ app.prepare().then(() => {
 
   server.use((req, res, next) => {
     // const hostname = req.hostname === "www.test.pamatnikpandemie.cz" ? "test.pamatnikpandemie.cz" : req.hostname
-    const hostname = req.hostname === "www.pamatnikpandemie.cz" ? "pamatnikpandemie.cz" : req.hostname
+    const hostname = req.hostname === "www.pamatnikpandemie.cz" ? "www.pamatnikpandemie.cz" : req.hostname
 
     // if (req.headers["x-forwarded-proto"] === "http" || req.hostname === "www.test.pamatnikpandemie.cz") {
     if (req.headers["x-forwarded-proto"] === "http" || req.hostname === "www.pamatnikpandemie.cz") {
