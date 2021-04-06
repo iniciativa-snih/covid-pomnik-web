@@ -3,17 +3,11 @@ import Image from "next/image"
 import { personSize } from "../../common/config"
 import styled from "@emotion/styled"
 
-// FIXME this is a heck and workaround of Heroku memory leak
-const myLoader = ({ src, width, quality }) => {
-  return `https://admin.pamatnikpandemie.cz/static/images/persons/${src}.png`
-}
-
 export const PersonStatue = ({ personName, withStory }: Props): JSX.Element => {
   return (
     <PersonStatueWrapper withStory={withStory}>
       <Image
-        loader={myLoader}
-        src={personName}
+        src={`/images/persons/${personName}.png`}
         alt={personName}
         width={personSize.width}
         height={personSize.height}

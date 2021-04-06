@@ -8,10 +8,6 @@ import { PlausibleEvents } from "../../common/plausibleEvents"
 import Link from "next/link"
 import { mainEmailAddress } from "../../common/config"
 
-const myLoader = ({ src, width, quality }) => {
-  return `https://admin.pamatnikpandemie.cz/static/images/${src}`
-}
-
 export const Menu = (): JSX.Element => {
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false)
   const plausible = usePlausible()
@@ -64,7 +60,7 @@ export const Menu = (): JSX.Element => {
           <div>
             <Link href="https://www.iniciativa-snih.cz/">
               <a title="Iniciativa Sníh" target="_blank" rel="noopener noreferrer">
-                <Image loader={myLoader} src="logo_Iniciativa_snih_09.svg" alt="logo_Iniciativa_snih_09.svg" width={300} height={56} />
+                <Image src="/images/logo_Iniciativa_snih_09.svg" alt="logo_Iniciativa_snih_09.svg" width={300} height={56} />
               </a>
             </Link>
           </div>
