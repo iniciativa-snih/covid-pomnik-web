@@ -27,7 +27,7 @@ export const PersonWithStory = ({ dateDeadsRefs, dayDead, personPositionArea, on
       <PersonStatue personName={dayDead.statue} withStory={true} />
 
       <StoryWrapper>
-        <Name>{`${dayDead.name}, ${dayDead.city ? `${dayDead.city},` : ""} ${dayDead.age} let`}</Name>
+        <Name>{dayDead.name}{dayDead.city ? `, ${dayDead.city}` : ""}{dayDead.age != null ? `, ${dayDead.age} let` : ""}</Name>
         <Story>{substringStory}</Story>
       </StoryWrapper>
     </PersonWithStoryWrapper>

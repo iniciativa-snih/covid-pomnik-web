@@ -95,7 +95,7 @@ export const ItemsDrawer = ({ deadsWithStatuesAndStories }: Props): JSX.Element 
       {modalContent && (
         <DeadPersonModalWindow onCloseModal={onClickCloseModalHandler}>
           <h1>
-            {modalContent.name}, {modalContent.city ? `${modalContent.city}, ` : ""} {modalContent.age} let
+            {modalContent.name}{modalContent.city ? `, ${modalContent.city}` : ""}{modalContent.age != null ? `, ${modalContent.age} let` : ""}
           </h1>
           <p>{moment(modalContent.date).format(dateTimeFormat)}</p>
           <p>{modalContent.story}</p>
